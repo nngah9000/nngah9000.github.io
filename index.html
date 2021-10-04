@@ -19,7 +19,9 @@
     <div id="app_basic">
 
         <div v-bind:title="timestamp" class="experiment-block">{{ message }}</div>
-        <div>{{ timestamp }}</div>
+        <div>{{ lol }}</div>
+
+        <button v-on:click="randomGenerate">Click me</button>
     
     </div>
     <script>
@@ -28,7 +30,13 @@
         data: {
           message: "🐵 Hello World 🔮",
           timestamp: `Timestamp ${new Date().toLocaleString()}`,
+          lol: '',
         },
+        methods:{
+            randomGenerate(){
+                this.lol ='kek'
+            }
+        }
       })
     </script>
   </body>
