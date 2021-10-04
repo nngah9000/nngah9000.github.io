@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <title>Vue Test</title>
 
@@ -12,9 +13,9 @@
 
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
-  </head>
+</head>
 
-  <body>
+<body>
     <!-- Basic usage -->
     <div id="app_basic">
 
@@ -22,39 +23,37 @@
         <div>{{ lol }}</div>
 
         <button v-on:click="randomGenerate">Click me</button>
-    
+
     </div>
     <script>
-      new Vue({
-        el: "#app_basic",
-        data: {
-          message: "🐵 Hello World 🔮",
-          timestamp: `Timestamp ${new Date().toLocaleString()}`,
-          lol: '',
-        },
-        methods:{
-            randomGenerate(){
+        new Vue({
+                    el: "#app_basic",
+                    data: {
+                        message: "🐵 Hello World 🔮",
+                        timestamp: `Timestamp ${new Date().toLocaleString()}`,
+                        lol: '',
+                    },
+                    methods: {
+                        randomGenerate() {
 
-                //https://docs.google.com/spreadsheets/d/1W0v7M0y-RzQEEJIucq15nSQlrMFiWpCOmqLz1soV4jg/edit?usp=sharing
+                            //https://docs.google.com/spreadsheets/d/1W0v7M0y-RzQEEJIucq15nSQlrMFiWpCOmqLz1soV4jg/edit?usp=sharing
 
-                const spreadsheet_id = '1W0v7M0y-RzQEEJIucq15nSQlrMFiWpCOmqLz1soV4jg'
-                const tab_name = '1'
-                const api_key = 'AIzaSyBVdyYHB739HXiGEudc3EQatjdkdMycQ0w'
-
-
-                
-                var url = 'https://sheets.googleapis.com/v4/spreadsheets/' +
-           spreadsheet_id + '/values/' + tab_name +
-           '?alt=json';//&key=' + api_key;
-($.getJSON(url, 'callback=?')).success(function(data) {
-  // ...
-  this.lol = data
-}
+                            const spreadsheet_id = '1W0v7M0y-RzQEEJIucq15nSQlrMFiWpCOmqLz1soV4jg'
+                            const tab_name = '1'
+                            const api_key = 'AIzaSyBVdyYHB739HXiGEudc3EQatjdkdMycQ0w'
 
 
-            }
-        }
-      })
+
+                            var url = 'https://sheets.googleapis.com/v4/spreadsheets/' + spreadsheet_id + '/values/' + tab_name + '?alt=json&key=' + api_key;
+
+                            const response = await fetch(url)
+
+                            const data = await response.json();
+
+                            this.lol = data;
+                        }
+                    })
     </script>
-  </body>
+</body>
+
 </html>
