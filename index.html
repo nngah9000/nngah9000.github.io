@@ -16,10 +16,12 @@
 
   <body>
     <!-- Basic usage -->
+    <div id="app_basic">
 
-    <div id="app_basic" v-bind:title="timestamp" class="experiment-block">{{ message }}</div>
-    <div>{{ timestamp }}</div>
-
+        <div v-bind:title="timestamp" class="experiment-block">{{ message }}</div>
+        <div>{{ timestamp }}</div>
+    
+    </div>
     <script>
       new Vue({
         el: "#app_basic",
